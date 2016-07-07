@@ -1,0 +1,17 @@
+{
+  "generator-plugin-wp": {
+    "name": "ZBiddy",
+    "homepage": "http://wpguru4u.com",
+    "description": "For BT",
+    "version": "1.0.0",
+    "author": "WPGuru4u",
+    "authoremail": "wpguru4u@gmail.com",
+    "authorurl": "http://wpguru4u.com",
+    "license": "GPLv2",
+    "slug": "zbiddy",
+    "classname": "ZBiddy",
+    "classprefix": "ZB_",
+    "prefix": "zbiddy",
+    "year": 2016
+  }
+}
