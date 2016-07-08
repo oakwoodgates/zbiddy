@@ -2,28 +2,28 @@
 /**
  * ZBiddy Redirect On Date
  *
- * @since 1.0.0
+ * @since 1.0.1
  * @package ZBiddy
  */
 
 /**
  * ZBiddy Redirect On Date.
  *
- * @since 1.0.0
+ * @since 1.0.1
  */
 class ZB_Redirect_On_Date {
 	/**
 	 * Parent plugin class
 	 *
 	 * @var   class
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	protected $plugin = null;
 
 	/**
 	 * Constructor
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.1
 	 * @param  object $plugin Main plugin object.
 	 * @return void
 	 */
@@ -35,7 +35,7 @@ class ZB_Redirect_On_Date {
 	/**
 	 * Initiate our hooks
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.1
 	 * @return void
 	 */
 	public function hooks() {

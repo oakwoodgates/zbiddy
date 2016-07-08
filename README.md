@@ -1,12 +1,12 @@
 # ZBiddy #
-**Contributors:**      WPGuru4u  
-**Donate link:**       http://wpguru4u.com  
-**Tags:**  
-**Requires at least:** 4.4  
-**Tested up to:**      4.4  
-**Stable tag:**        1.0.0  
-**License:**           GPLv2  
-**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html  
+**Contributors:**      WPGuru4u, OakwoodGates
+**Donate link:**       http://wpguru4u.com
+**Tags:**
+**Requires at least:** 4.4
+**Tested up to:**      4.4
+**Stable tag:**        1.0.1
+**License:**           GPLv2
+**License URI:**       http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description ##
 
@@ -26,6 +26,11 @@ For BT
 
 
 ## Changelog ##
+
+### 1.0.1 ###
+* Include CMB2
+* Include CMB2 Post Search Field
+* Class ZB_Redirect_On_Date - adds metabox to pages to redirect page after a certain date.
 
 ### 1.0.0 ###
 * First release
