@@ -52,7 +52,7 @@ class ZB_Redirect_On_Date {
 		*/
 		$cmb = new_cmb2_box( array(
 			'id'            => 'zbiddy_redirect_on_date_metabox',
-			'title'         => __( 'Redirect on date', 'cmb2' ),
+			'title'         => __( 'Redirect on date', 'zbiddy' ),
 			'object_types'  => array( 'page', ), // Post type
 			'context'       => 'normal',
 			'priority'      => 'high',
@@ -63,7 +63,7 @@ class ZB_Redirect_On_Date {
 
 		// Regular text field
 		$cmb->add_field( array(
-			'name'       => __( 'Enable redirect on date', 'cmb2' ),
+			'name'       => __( 'Enable redirect on date', 'zbiddy' ),
 			'id'         => $prefix . 'enable_redirect_on_date',
 			'type'       => 'checkbox',
 		) );
@@ -71,14 +71,14 @@ class ZB_Redirect_On_Date {
 	//	$time = time();
 		$ts = date('m-d-y, H:i');
 		$cmb->add_field( array(
-			'name'       => __( 'Time and date to start redirecting', 'cmb2' ),
+			'name'       => __( 'Time and date to start redirecting', 'zbiddy' ),
 			'desc'       => 'Will redirect any time after this. Compares to UTC, currently: ' . $ts . ' (mm-dd-yy, hh:mm)',
 			'id'         => $prefix . 'time_to_redirect',
 			'type'       => 'text_datetime_timestamp',
 		) );
 
 		$cmb->add_field( array(
-			'name'       => __( 'Redirect to page', 'cmb2' ),
+			'name'       => __( 'Redirect to page', 'zbiddy' ),
 			'id'         => $prefix . 'redirect_to',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
