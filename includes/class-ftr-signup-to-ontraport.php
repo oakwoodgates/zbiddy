@@ -39,7 +39,7 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 	 * @return void
 	 */
 	public function hooks() {
-
+		add_action('user_register', array( $this, 'conditions' ), 10, 1);
 	}
 
 	/**
