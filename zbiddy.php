@@ -3,7 +3,7 @@
  * Plugin Name: ZBiddy
  * Plugin URI:  http://wpguru4u.com
  * Description: For Brigit
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      Reuben
  * Author URI:  http://wpguru4u.com
  * Donate link: http://wpguru4u.com
@@ -14,7 +14,7 @@
  * @link http://wpguru4u.com
  *
  * @package ZBiddy
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 /**
@@ -147,7 +147,9 @@ final class ZBiddy {
 		if ( ! class_exists( 'CMB2_Post_Search_field', false ) )
 			require( self::dir( 'vendor/cmb2-post-search-field/lib/init.php' ) );
 
-		$this->redirect_on_date = new ZB_Redirect_On_Date( $this );
+	//	$this->options = 					new ZB_Options( $this );
+		$this->redirect_on_date = 			new ZB_Redirect_On_Date( $this );
+		$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -268,6 +270,8 @@ final class ZBiddy {
 			case 'url':
 			case 'path':
 			case 'redirect_on_date':
+			case 'ftr_signup_to_ontraport':
+	//		case 'options':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );
