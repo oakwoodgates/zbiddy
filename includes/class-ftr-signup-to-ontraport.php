@@ -51,6 +51,10 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 	 */
 	public function conditions( $user_id ) {
 
+		if ( ! $user_id ) {
+			return;
+		}
+
 		$user = get_user_by( 'id', $user_id );
 
 		if ( ! in_array( 'ftr_user', $user->roles ) ){
@@ -90,7 +94,7 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 
 		global $pilotpress;
 
-	 	$api_result = $pilotpress->api_call( 'add_newly_registered_contact', $userData );
+		$api_result = $pilotpress->api_call( 'add_newly_registered_contact', $userData );
 	}
 
 }
