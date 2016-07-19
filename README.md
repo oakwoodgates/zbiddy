@@ -27,11 +27,14 @@ For BT
 
 ## Changelog ##
 
+### 1.0.3 ###
+* Add login redirect for ftr_reader (FTR Reader)
+
 ### 1.0.2 ###
 * Include ZB_FTR_Signup_to_ONTRAPORT (excluded until Wontrapi, will be rewritten)
 * Include a base options page (for later use)
 * includes/functions-zbiddy.php - for helper functions, etc
-* Add login redirect for ftr_user
+* Add login redirect for ftr_user (FTR Customer)
 
 ### 1.0.1 ###
 * Include CMB2
