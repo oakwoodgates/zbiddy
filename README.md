@@ -27,6 +27,12 @@ For BT
 
 ## Changelog ##
 
+### 1.0.2 ###
+* Include ZB_FTR_Signup_to_ONTRAPORT (excluded until Wontrapi, will be rewritten)
+* Include a base options page (for later use)
+* includes/functions-zbiddy.php - for helper functions, etc
+* Add login redirect for ftr_user
+
 ### 1.0.1 ###
 * Include CMB2
 * Include CMB2 Post Search Field

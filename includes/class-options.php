@@ -61,7 +61,7 @@ class ZB_Options {
 		$this->plugin = $plugin;
 		$this->hooks();
 
-		$this->title = __( 'Biddy Settings', 'zbiddy' );
+		$this->title = __( 'ZBiddy', 'zbiddy' );
 	}
 
 	/**
@@ -148,6 +148,20 @@ class ZB_Options {
 			'id'      => 'test_text', // no prefix needed
 			'type'    => 'text',
 			'default' => __( 'Default Text', 'myprefix' ),
+		) );
+		*/
+		/*
+		// Add new field
+		$cmb->add_field( array(
+			'name'				=> __( 'Related post' ),
+			'id'				=> 'prefix_related_post',
+			'type'				=> 'post_search_text', // This field type
+			// post type also as array
+			'post_type'			=> 'post',
+			// Default is 'checkbox', used in the modal view to select the post type
+			'select_type'		=> 'radio',
+			// Will replace any selection with selection from modal. Default is 'add'
+			'select_behavior' 	=> 'replace',
 		) );
 		*/
 

@@ -74,7 +74,7 @@ final class ZBiddy {
 	 * @var  string
 	 * @since  1.0.0
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.2';
 
 	/**
 	 * URL of plugin directory
@@ -147,9 +147,11 @@ final class ZBiddy {
 		if ( ! class_exists( 'CMB2_Post_Search_field', false ) )
 			require( self::dir( 'vendor/cmb2-post-search-field/lib/init.php' ) );
 
+		require( self::dir( 'includes/functions-zbiddy.php' ) );
+
 	//	$this->options = 					new ZB_Options( $this );
 		$this->redirect_on_date = 			new ZB_Redirect_On_Date( $this );
-		$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
+	//	$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
