@@ -26,6 +26,9 @@ For BT
 
 
 ## Changelog ##
+### 1.0.4 ###
+* Rewrite ZB_FTR_Signup_to_ONTRAPORT
+* Add custom page template for dev stuff
 
 ### 1.0.3 ###
 * Add login redirect for ftr_reader (FTR Reader)

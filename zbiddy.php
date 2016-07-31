@@ -3,7 +3,7 @@
  * Plugin Name: ZBiddy
  * Plugin URI:  http://wpguru4u.com
  * Description: For Brigit
- * Version:     1.0.3
+ * Version:     1.0.4
  * Author:      Reuben
  * Author URI:  http://wpguru4u.com
  * Donate link: http://wpguru4u.com
@@ -14,7 +14,7 @@
  * @link http://wpguru4u.com
  *
  * @package ZBiddy
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 /**
@@ -74,7 +74,7 @@ final class ZBiddy {
 	 * @var  string
 	 * @since  1.0.0
 	 */
-	const VERSION = '1.0.3';
+	const VERSION = '1.0.4';
 
 	/**
 	 * URL of plugin directory
@@ -151,7 +151,8 @@ final class ZBiddy {
 
 	//	$this->options = 					new ZB_Options( $this );
 		$this->redirect_on_date = 			new ZB_Redirect_On_Date( $this );
-	//	$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
+		$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
+	//	ZB_ExecuteTemplater::get_instance();
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -234,11 +235,14 @@ final class ZBiddy {
 	 * Check that all plugin requirements are met
 	 *
 	 * @since  1.0.0
+	 * @since  1.0.4 - require Wontrapi
 	 * @return boolean True if requirements are met.
 	 */
 	public function meets_requirements() {
 		// Do checks for required classes / functions
 		// function_exists('') & class_exists('').
+		if ( ! class_exists( 'Wontrapi' ) )
+			return false;
 		// We have met all requirements.
 		return true;
 	}
@@ -273,7 +277,7 @@ final class ZBiddy {
 			case 'path':
 			case 'redirect_on_date':
 			case 'ftr_signup_to_ontraport':
-	//		case 'options':
+		//	case 'options':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );
