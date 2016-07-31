@@ -83,8 +83,8 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 			$op_id = ( ! empty( $op->data->id ) ) ? $op->data->id : $op_id;
 		}
 
-		// if contact was updated (or failed?) it
-		// does not return the id from Ontraport
+		// If contact was updated (or failed?) wontrapi_update_or_create_contact
+		// does not return the id from Ontraport. Get id by email instead.
 		if ( ! $op_id ){
 			$op = '';
 			// get the contact from OP by email
