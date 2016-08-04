@@ -151,8 +151,8 @@ final class ZBiddy {
 
 	//	$this->options = 					new ZB_Options( $this );
 		$this->redirect_on_date = 			new ZB_Redirect_On_Date( $this );
-		$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
-	//	ZB_ExecuteTemplater::get_instance();
+	//	$this->ftr_signup_to_ontraport = 	new ZB_FTR_Signup_to_ONTRAPORT( $this );
+		ZB_ExecuteTemplater::get_instance();
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -241,8 +241,8 @@ final class ZBiddy {
 	public function meets_requirements() {
 		// Do checks for required classes / functions
 		// function_exists('') & class_exists('').
-		if ( ! class_exists( 'Wontrapi' ) )
-			return false;
+	//	if ( ! class_exists( 'Wontrapi' ) )
+	//		return false;
 		// We have met all requirements.
 		return true;
 	}
@@ -276,7 +276,7 @@ final class ZBiddy {
 			case 'url':
 			case 'path':
 			case 'redirect_on_date':
-			case 'ftr_signup_to_ontraport':
+		//	case 'ftr_signup_to_ontraport':
 		//	case 'options':
 				return $this->$field;
 			default:
