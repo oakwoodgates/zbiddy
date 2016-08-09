@@ -34,5 +34,57 @@ function zbiddy_login_redirect( $redirect_to, $request, $user ) {
 
 	return $redirect_to;
 }
-
 add_filter( 'login_redirect', 'zbiddy_login_redirect', 20, 3 );
+
+/**
+ * zbiddy_wplogin_styles
+ * Styles for wp-login.php
+ * @return string css
+ * @since  1.0.5 similar to /login-page
+ */
+function zbiddy_wplogin_styles() { ?>
+<?php
+$img = content_url() . '/uploads/2016/04/logo_btc.png';
+$bkg = content_url() . '/uploads/2016/04/aurora-borealis-wallpaper-hd-wallpaper-3.jpg'; ?>
+<style type="text/css">
+.login h1 a {
+    background-image: url(<?php echo $img ?>) !important;
+    width: 320px !important;
+    background-size: 100%!important;
+    height: 60px !important;
+}
+body {
+	background-image: url(<?php echo $bkg ?>);
+	background-position: left center !important;
+	background-repeat: no-repeat;
+}
+.login form#loginform {
+    background: transparent;
+    /* color: #fff; */
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.login form .input, .login input[type=text] {
+    padding: 4px 8px;
+    background: transparent!important;
+    color: #fff;
+    border-radius: 2px;
+}
+.login label,
+.login #backtoblog a,
+.login #nav a {
+    font-weight: 400;
+    font-family: MontserratLight;
+    font-size: 14px !important;
+    color:#fff;
+}
+.wp-core-ui .button-primary {
+	background:#66c3c9;
+	border: 0;
+    box-shadow: none;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+</style>
+<?php }
+add_action( 'login_enqueue_scripts', 'zbiddy_wplogin_styles' );
