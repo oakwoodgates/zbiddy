@@ -23,13 +23,14 @@ function zbiddy_login_redirect( $redirect_to, $request, $user ) {
 			// redirect them to the request page
 			return home_url( '/readers-hub/readings/request/' );
 		}
-
 		// check for ftr_reader (FTR Reader)
 		if ( in_array( 'ftr_reader', $user->roles ) ) {
 			// redirect them to the dashboard
 			return home_url( '/readers-hub/dashboard/' );
 		}
-
+	//	else {
+	//		return home_url( '/readers-hub/dashboard/' );
+	//	}
 	}
 
 	return $redirect_to;
@@ -54,9 +55,10 @@ $bkg = content_url() . '/uploads/2016/04/aurora-borealis-wallpaper-hd-wallpaper-
     height: 60px !important;
 }
 body {
-	background-image: url(<?php echo $bkg ?>);
+	background-image: url(<?php echo $bkg ?>) !important;
 	background-position: left center !important;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat !important;
+	background-size:cover!important;
 }
 .login form#loginform {
     background: transparent;
@@ -73,18 +75,29 @@ body {
 .login label,
 .login #backtoblog a,
 .login #nav a {
-    font-weight: 400;
+ /*   font-weight: 400;
     font-family: MontserratLight;
-    font-size: 14px !important;
-    color:#fff;
+    font-size: 14px !important; */
+    color:#fff!important;
 }
 .wp-core-ui .button-primary {
-	background:#66c3c9;
-	border: 0;
-    box-shadow: none;
-    text-shadow: none;
+	background:#66c3c9!important;
+	border: 0!important;
+    box-shadow: none!important;
+    text-shadow: none!important;
     text-transform: uppercase;
 }
 </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'zbiddy_wplogin_styles' );
+
+/**
+ * [zbiddy_logout_redirect description]
+ * @return [type] [description]
+ * @since  1.0.5 [<description>]
+ */
+function zbiddy_logout_redirect(){
+  wp_redirect( home_url( 'readers-hub/' ) );
+  exit();
+}
+add_action( 'wp_logout', 'zbiddy_logout_redirect', 9 );
