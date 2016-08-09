@@ -3,7 +3,7 @@
  * Plugin Name: ZBiddy
  * Plugin URI:  http://wpguru4u.com
  * Description: For Brigit
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      Reuben
  * Author URI:  http://wpguru4u.com
  * Donate link: http://wpguru4u.com
@@ -14,7 +14,7 @@
  * @link http://wpguru4u.com
  *
  * @package ZBiddy
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 /**
@@ -74,7 +74,7 @@ final class ZBiddy {
 	 * @var  string
 	 * @since  1.0.0
 	 */
-	const VERSION = '1.0.4';
+	const VERSION = '1.0.5';
 
 	/**
 	 * URL of plugin directory

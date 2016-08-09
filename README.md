@@ -26,6 +26,10 @@ For BT
 
 
 ## Changelog ##
+### 1.0.5 ###
+* Design changes on wp-login.php
+* Logout redirect
+
 ### 1.0.4 ###
 * Rewrite ZB_FTR_Signup_to_ONTRAPORT
 * Add custom page template for dev stuff
