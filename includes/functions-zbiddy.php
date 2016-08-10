@@ -45,7 +45,8 @@ add_filter( 'login_redirect', 'zbiddy_login_redirect', 20, 3 );
  */
 function zbiddy_wplogin_styles() { ?>
 <?php
-$img = content_url() . '/uploads/2016/04/logo_btc.png';
+// $img = content_url() . '/uploads/2016/04/logo_btc.png';
+$img = ZBiddy::url( 'assets/images/admin-logo-white.png' );
 $bkg = content_url() . '/uploads/2016/04/aurora-borealis-wallpaper-hd-wallpaper-3.jpg'; ?>
 <style type="text/css">
 .login h1 a {
