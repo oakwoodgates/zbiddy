@@ -53,13 +53,17 @@ $bkg = content_url() . '/uploads/2016/04/aurora-borealis-wallpaper-hd-wallpaper-
     background-image: url(<?php echo $img ?>) !important;
     width: 320px !important;
     background-size: 100%!important;
-    height: 60px !important;
+    height: 200px !important;
+    margin-top:-30px!important;
 }
 body {
 	background-image: url(<?php echo $bkg ?>) !important;
 	background-position: left center !important;
 	background-repeat: no-repeat !important;
 	background-size:cover!important;
+	background-attachment:fixed!important;
+	display: table;
+	width: 100%;
 }
 .login form#loginform {
     background: transparent;
