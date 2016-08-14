@@ -94,7 +94,7 @@ body {
 }
 </style>
 <?php }
-add_action( 'login_enqueue_scripts', 'zbiddy_wplogin_styles' );
+add_action( 'login_head', 'zbiddy_wplogin_styles' );
 
 /**
  * [zbiddy_logout_redirect description]
