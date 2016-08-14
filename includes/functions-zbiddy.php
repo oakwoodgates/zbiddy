@@ -106,3 +106,13 @@ function zbiddy_logout_redirect(){
   exit();
 }
 add_action( 'wp_logout', 'zbiddy_logout_redirect', 9 );
+
+/**
+ * Filter the wp-login.php logo link
+ * @return [type] [description]
+ * @since  1.0.5 [<description>]
+ */
+function zbiddy_login_logo_url() {
+	return home_url();
+}
+add_filter( 'login_headerurl', 'zbiddy_login_logo_url' );
