@@ -85,7 +85,7 @@ body.login form {
     font-size: 14px !important; */
     color:#fff!important;
 }
-.body.login .message {
+body.login .message {
 	border-left-color: #66c3c9;
 }
 .wp-core-ui .button-primary {
