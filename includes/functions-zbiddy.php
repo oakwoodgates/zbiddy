@@ -65,7 +65,7 @@ body {
 	display: table;
 	width: 100%;
 }
-.login form#loginform {
+body.login form {
     background: transparent;
     /* color: #fff; */
     box-shadow: none;
