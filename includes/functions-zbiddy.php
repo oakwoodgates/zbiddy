@@ -13,8 +13,13 @@
  * @return string
  * @since  1.0.2 Redirect ftr_user to readers hub readings request page
  * @since  1.0.3 Redirect ftr_reader to readers hub dashboard
+ * @since  1.0.5 Don't redirect if login from free reading page
  */
 function zbiddy_login_redirect( $redirect_to, $request, $user ) {
+	global $post;
+	if ( is_object( $post ) && '3718' == $post->ID ) {
+		return $redirect_to;
+	}
 	// is there a user to check?
 	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
 
