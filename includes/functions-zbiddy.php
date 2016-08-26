@@ -16,9 +16,8 @@
  * @since  1.0.5 Don't redirect if login from free reading page
  */
 function zbiddy_login_redirect( $redirect_to, $request, $user ) {
-	global $post;
-	if ( is_object( $post ) && '3718' == $post->ID ) {
-		return $redirect_to;
+	if ( home_url( '/free-tarot-readings/' ) == $request ) {
+		return home_url( '/free-tarot-readings/' );
 	}
 	// is there a user to check?
 	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
@@ -40,7 +39,7 @@ function zbiddy_login_redirect( $redirect_to, $request, $user ) {
 
 	return $redirect_to;
 }
-add_filter( 'login_redirect', 'zbiddy_login_redirect', 20, 3 );
+add_filter( 'login_redirect', 'zbiddy_login_redirect', 999, 3 );
 
 /**
  * zbiddy_wplogin_styles
