@@ -72,6 +72,7 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 		if ( ! $op_id ) {
 			$data = array(
 				'email'	=> $u->user_email,
+				'firstname'	=> $u->user_firstname,
 			);
 
 			// Update/Create a contact if the email record
