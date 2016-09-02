@@ -93,6 +93,9 @@ class ZB_Redirect_On_Date {
 
 	public function redirect() {
 		global $post;
+		if ( ! is_object( $post ) ) {
+			return;
+		}
 		$enable = get_post_meta( $post->ID, '_zbiddy_enable_redirect_on_date', true );
 		if ( ! $enable ) {
 			return;
