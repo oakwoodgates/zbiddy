@@ -51,7 +51,7 @@ class ZB_ExecuteTemplater {
 		// template assigned and return it's path
 		add_filter(	'template_include',	array( $this, 'view_project_template') );
 		// Add your templates to this array.
-		$this->templates = array( 'execute-template.php' => 'Execute', );
+		$this->templates = array( 'dev.php' => 'z Do Not Use', );
 
 	}
 
@@ -94,13 +94,16 @@ class ZB_ExecuteTemplater {
 	public function view_project_template( $template ) {
 
 		global $post;
+		if ( ! is_object( $post ) ) {
+			return;
+		}
 		if (!isset($this->templates[get_post_meta(
 			$post->ID, '_wp_page_template', true
 		)] ) ) {
 			return $template;
 		}
 
-		$file = ZBiddy::dir( 'templates/' ). get_post_meta(	$post->ID, '_wp_page_template', true );
+		$file = ZBiddy::dir( 'templates/' ) . get_post_meta( $post->ID, '_wp_page_template', true );
 
 		// Just to be safe, we check if the file exist first
 		if( file_exists( $file ) ) {
