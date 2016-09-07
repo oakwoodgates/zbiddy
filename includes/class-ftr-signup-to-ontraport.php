@@ -65,14 +65,15 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 			return;
 		}
 
+		$op_id = $op = '';
+
 		// will probably be using this when registering wp users,
 		// so don't expect this to be true
-		$op_id = ( ! empty( get_user_meta( $uid, 'wontrapi_id', true ) ) ) ? get_user_meta( $uid, 'wontrapi_id', true ) : '';
+		$op_id = get_user_meta( $uid, 'wontrapi_id', true );
 
 		if ( ! $op_id ) {
 			$data = array(
 				'email'	=> $u->user_email,
-				'firstname'	=> $u->user_firstname,
 			);
 
 			// Update/Create a contact if the email record
@@ -82,6 +83,14 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 			// if the contact was created new in Ontraport,
 			// get the id of the new user from OP
 			$op_id = ( ! empty( $op->data->id ) ) ? $op->data->id : $op_id;
+		} else {
+			// the user has an account in OP and we have the ID, just give them the goods and leave
+			// add tags for ftr user
+			wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
+			// add newsletter sequence
+			wontrapi_add_sequence_to_contact( $op_id, '1' );
+			// gtfo
+			return;
 		}
 
 		// If contact was updated (or failed?) wontrapi_update_or_create_contact
@@ -100,10 +109,10 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 		}
 
 		if ( ! empty( $u->user_firstname ) ) {
-			$abc = wontrapi_get_contact( $op_id );
-			if ( empty( $abc->firstname ) ) {
-				$abc->firstname = $u->user_firstname;
-				wontrapi_update_contact( $abc );
+			$c = wontrapi_get_contact( $op_id );
+			if ( empty( $c->firstname ) ) {
+				$c->firstname = $u->user_firstname;
+				$op = wontrapi_update_contact( $c );
 			}
 		}
 
