@@ -71,57 +71,79 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 		// so don't expect this to be true
 		$op_id = get_user_meta( $uid, 'wontrapi_id', true );
 
-		if ( ! $op_id ) {
-			$data = array(
+		// should never be true, unless we are calling this function direct for a sync
+		if ( $op_id ) {
+			// the user has an account in OP and we have the ID, just give them the goods and leave
+
+			// add tags for ftr user
+			wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
+
+			// currently the way the FTR user's name at registration is not ideal
+			if ( ! empty( $u->user_firstname ) ) {
+				$c = wontrapi_get_contact( $op_id );
+				// if they already have a firstname in OP, leave it
+				if ( empty( $c->firstname ) ) {
+					$c->firstname = $u->user_firstname;
+					$op = wontrapi_update_contact( $c );
+				}
+			}
+			// nothing left to see here captain
+
+		} else {
+			// Let's set this human up
+
+			// data to send
+			$dts = array(
 				'email'	=> $u->user_email,
 			);
 
-			// Update/Create a contact if the email record
-			// does/not exist in Ontraport
-			$op = wontrapi_update_or_create_contact( $u->user_email, $data );
+			// Update/Create a contact if the email record does/not exist in Ontraport
+			$op = wontrapi_update_or_create_contact( $u->user_email, $dts );
 
-			// if the contact was created new in Ontraport,
-			// get the id of the new user from OP
-			$op_id = ( ! empty( $op->data->id ) ) ? $op->data->id : $op_id;
-		} else {
-			// the user has an account in OP and we have the ID, just give them the goods and leave
-			// add tags for ftr user
-			wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
-			// add newsletter sequence
-			wontrapi_add_sequence_to_contact( $op_id, '1' );
-			// gtfo
-			return;
-		}
+			// if the contact was created new in Ontraport we will be able to get the ID
+			if ( ! empty( $op->data->id ) ) {
 
-		// If contact was updated (or failed?) wontrapi_update_or_create_contact
-		// does not return the id from Ontraport. Get id by email instead.
-		if ( ! $op_id ){
-			$op = '';
-			// get the contact from OP by email
-			$op = wontrapi_get_contacts_by( 'email', $u->user_email );
-			// get the id of the user in OP
-			if ( ! empty( $op->data[0]->id ) ){
-				$op_id = $op->data[0]->id;
+				$op_id = $op->data->id;
+
+				if ( ! empty( $u->user_firstname ) ) {
+					$dts = array(
+						'id'	=> $op_id,
+						'firstname' => $u->user_firstname
+					);
+
+					$op = wontrapi_update_contact( $dts );
+				}
+				// add tags for ftr user
+				wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
+				// update the user meta in WP with the id from OP
+				update_user_meta( $uid, 'wontrapi_id', $op_id );
+
+			// if we updated existing contact, we do not have an ID from OP
 			} else {
-				// something messed up
-				return;
+				// clear
+				$op = '';
+				// since we don't have an ID, lookup the user by email in OP
+				$op = wontrapi_get_contacts_by( 'email', $u->user_email );
+				// get the id of the user in OP
+				if ( ! empty( $op->data[0]->id ) ) {
+					$op_id = $op->data[0]->id;
+					// currently the way the FTR user's name at registration is not ideal
+					// if they already have a firstname in OP, leave it
+					if ( ! empty( $u->user_firstname ) && empty( $op->data[0]->firstname ) ) {
+						$dts = array(
+							'id'	=> $op_id,
+							'firstname' => $u->user_firstname
+						);
+
+						$op = wontrapi_update_contact( $dts );
+					}
+					// add tags for ftr user
+					wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
+					// update the user meta in WP with the id from OP
+					update_user_meta( $uid, 'wontrapi_id', $op_id );
+				}
 			}
 		}
-
-		if ( ! empty( $u->user_firstname ) ) {
-			$c = wontrapi_get_contact( $op_id );
-			if ( empty( $c->firstname ) ) {
-				$c->firstname = $u->user_firstname;
-				$op = wontrapi_update_contact( $c );
-			}
-		}
-
-		// update the user meta in WP with the id from OP
-		update_user_meta( $uid, 'wontrapi_id', $op_id );
-		// add tags for ftr user
-		wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
-		// add newsletter sequence
-		wontrapi_add_sequence_to_contact( $op_id, '1' );
 	}
 
 }
