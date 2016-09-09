@@ -84,7 +84,7 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 				// if they already have a firstname in OP, leave it
 				if ( empty( $c->firstname ) ) {
 					$c->firstname = $u->user_firstname;
-					$op = wontrapi_update_contact( $c );
+					wontrapi_update_contact( $c );
 				}
 			}
 			// nothing left to see here captain
@@ -111,7 +111,7 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 						'firstname' => $u->user_firstname
 					);
 
-					$op = wontrapi_update_contact( $dts );
+					wontrapi_update_contact( $dts );
 				}
 				// add tags for ftr user
 				wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
@@ -135,7 +135,7 @@ class ZB_FTR_Signup_to_ONTRAPORT {
 							'firstname' => $u->user_firstname
 						);
 
-						$op = wontrapi_update_contact( $dts );
+						wontrapi_update_contact( $dts );
 					}
 					// add tags for ftr user
 					wontrapi_add_tags_to_contacts( array( $op_id ), array( '587' ) );
