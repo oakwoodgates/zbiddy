@@ -123,3 +123,38 @@ function zbiddy_login_logo_url() {
 	return home_url();
 }
 add_filter( 'login_headerurl', 'zbiddy_login_logo_url' );
+
+/**
+ * [zbiddy_header_scripts description]
+ * @return [type] [description]
+ * @since  1.0.6 [<description>]
+ */
+function zbiddy_header_scripts(){ ?>
+	<!-- Facebook Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+	fbq('init', '342033679332480');
+	fbq('track', "PageView");</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=342033679332480&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- End Facebook Pixel Code -->
+	<?php if ( is_page( array( 'help', 'ebooks', 'order-tf1', 'order-tf2' ) ) ) { ?>
+		<!--Start of Zopim Live Chat Script-->
+		<script type="text/javascript">
+		window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+		$.src="//v2.zopim.com/?3cB87JzwwMni6cuEdMRTdgWTUMr8qz0u";z.t=+new Date;$.
+		type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+		</script>
+		<!--End of Zopim Live Chat Script-->
+	<?php
+	}
+}
+add_action( 'wp_head', 'zbiddy_header_scripts' );
